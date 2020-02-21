@@ -1,0 +1,50 @@
+@model Product
+
+<h1 class="text-center">This is our Product page!</h1>
+<br/>
+<a href="/">Dashboard</a>
+<a href="/product">Products</a>
+<a href="/order">Orders</a>
+<a href="/customer">Customers</a>
+<a href="">Settings</a>
+<br/>
+<form asp-action="AddProduct" asp-controller="Home" method="POST">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form-control">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <select asp-for="Amount">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+<ul>
+    @foreach(var product in ViewBag.AllProducts)
+    {
+        <li style="display: inline-block; padding: 5%; margin: 1% ;border: 2px solid black">@product.Title <br/> (@product.Amount left)</li>
+        
+    }
+</ul>

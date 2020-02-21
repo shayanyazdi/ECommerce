@@ -1,0 +1,27 @@
+﻿<h1 class="text-center">This is our dashboard</h1>
+<br/>
+<a href="/">Dashboard</a>
+<a href="/product">Products</a>
+<a href="/order">Orders</a>
+<a href="/customer">Customers</a>
+<a href="">Settings</a>
+<form action="/">
+  <label for="search">Search:</label>
+  <input type="search" id="search" name="search" placeholder="search...">
+  <input type="submit">
+</form>
+<ul>
+    @foreach(var product in ViewBag.AllProducts)
+    {
+        <li style="display: inline-block; border: 2px solid black">@product.Title <br/> (@product.Amount left)</li>
+        
+    }
+</ul>
+<br/>
+<p>New Customers</p>
+<ul>
+    @foreach(var customer in ViewBag.AllCustomers)
+    {
+        <li>@customer.FirstName @customer.LastName (Joined @(Convert.ToInt32((DateTime.Now - customer.CreatedAt).TotalHours)) Hours ago.)</li>
+    }
+</ul>
